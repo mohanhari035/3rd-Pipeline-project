@@ -5,6 +5,6 @@
 storageaccountname ={
     "abhimanyu-storage" = {
     "resource_group_name" = "rgs84748"
-    "location"            = "Central US"
+    "location"            = "West US"
 }
 }
