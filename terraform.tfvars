@@ -3,7 +3,7 @@
 "rgs47464" = "Central US"
 }
 storageaccountname ={
-    "abhimanyu-storage" = {
+    "abhimanyustorage7657" = {
     "resource_group_name" = "rgs84748"
     "location"            = "West US"
 }
