@@ -4,9 +4,22 @@ trigger:
 pool: 
   name: Ravi-mohan-pipeline
 
+
 steps:
 - script: terraform init
   displayName: 'Terraform Init'
+
+
+- script: terraform fmt
+  displayName: terraform fmt
+
+
+- script: terraform plan
+  displayName: terraform plan
+
+
+- script: terraform apply -auto-approve
+  displayName: terraform apply
 
 
 
