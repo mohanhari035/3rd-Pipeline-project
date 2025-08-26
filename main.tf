@@ -7,7 +7,7 @@ resource "azurerm_storage_account" "example" {
   for_each = var.storageaccountname
   name                     = each.key
   resource_group_name      = azurerm_resource_group.resource-abhimanyu[each.value].name
-  location                 = azurerm_resource_group.resource-abhimanyu[each.value].location
+  location                 = each.value.location
   account_tier             = "Standard"
   account_replication_type = "GRS"
 }
