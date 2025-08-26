@@ -18,7 +18,7 @@ steps:
   displayName: terraform plan
 
 
-- script: terraform apply -auto-approve
+- script: terraform destroy -auto-approve
   displayName: terraform apply
 
 
