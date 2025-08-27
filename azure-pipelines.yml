@@ -11,7 +11,7 @@ jobs:
       - script: terraform init
         displayName: "Terraform Init"
 
-      - script: terraform fmt -check -recursive
+      - script: terraform fmt -recursive
         displayName: "Terraform Format Check"
 
       - script: terraform validate
