@@ -11,5 +11,13 @@ jobs:
     - script: terraform init
 
 
+  - job: fmt
+    steps:
+    - script: terraform fmt
+
+
+  - job: apply
+    steps:
+    - script: terraform apply
 
    
