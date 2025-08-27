@@ -1,21 +1,32 @@
 trigger:
 - main
 
-pool: 
+pool:
   name: Ravi-mohan-pipeline
 
-
 jobs:
-  - job: init
+  - job: terraform_plan
+    displayName: "Terraform Plan"
     steps:
-    - script: terraform init
+      - script: terraform init
+        displayName: "Terraform Init"
 
+      - script: terraform fmt -check -recursive
+        displayName: "Terraform Format Check"
 
-  
-    - script: terraform fmt
+      - script: terraform validate
+        displayName: "Terraform Validate"
 
+      - script: terraform plan -out=tfplan
+        displayName: "Terraform Plan"
 
-  
-    - script: terraform apply
+  - job: terraform_apply
+    displayName: "Terraform Apply"
+    dependsOn: terraform_plan
+    
+    steps:
+      - script: terraform apply -auto-approve tfplan
+        displayName: "Terraform Apply"
+
 
    
