@@ -1,36 +1,33 @@
 trigger:
 - main
 
-pool:
-  name: Ravi-mohan-pipeline
+pool: Ravi-mohan-pipeline
 
-jobs:
-  - job: terraform_plan
-    displayName: "Terraform Plan"
+stages: 
+- stage: Plan
+  displayName: "Terraform Stage Plan"
+  jobs:
+  - job: terraform_init
+    displayName: terraform initwa
     steps:
       - script: terraform init
-        displayName: "Terraform Init"
-
-     
+        displayName: Terraform ko init karega
 
       - script: terraform validate
-        displayName: "Terraform Validate"
+        displayName: Terraform ko validate karega
 
-      - script: terraform plan -out=tfplan
-        displayName: "Terraform Plan"
+      - script: terraform plan
+        displayName: Terraform ko plan karega
 
-      # ✅ Publish tfplan as artifact
-      - publish: tfplan
-        artifact: tfplan-artifact
 
-  - job: terraform_apply
-    displayName: "Terraform Apply"
-    dependsOn: terraform_plan
-    
+
+- stage:
+  displayName: Terraform Apply
+  dependsOn: plan
+  jobs:
+  - job: Apply
+    displayName: Terraform apply karega 
     steps:
-      # ✅ Download tfplan artifact
-      - download: current
-        artifact: tfplan-artifact
-
-      - script: terraform apply -auto-approve tfplan
-        displayName: "Terraform Apply"
+      - script: terraform apply
+        displayName: Terraform ko apply karega 
+   
